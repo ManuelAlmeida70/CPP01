@@ -1,13 +1,11 @@
+#Compilator
 CC		= c++
-CFLAGS	= -Wall -Wextra -Werror -std=c++98
 
-SRC		= newZombie.cpp randomChump.cpp Zombie.cpp
+#Flags of  compilator
+CFLAGS	= -Wall Wextra -Werror -std=c++98
 
-OBJS	= $(SRC:.cpp=.o)
+SRCS	= $(SRC_DIR)
 
-EXEC	= runZombie
-
-all: $(EXEC)
-
-$(EXEC): $(OBJS)
-
+#Directory
+SRC_DIR	= src/
+OBJ_DIR	= obj
