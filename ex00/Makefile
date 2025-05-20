@@ -1,11 +1,34 @@
-#Compilator
-CC		= c++
+NAME = zombie
+CC = c++
+CFLAGS = -Wall -Wextra -Werror -std=c++98 $(INCLUDE)
+INCLUDE = -Iinclude
 
-#Flags of  compilator
-CFLAGS	= -Wall Wextra -Werror -std=c++98
+SRC_DIR = src
+OBJ_DIR = obj
+SRCS = $(SRC_DIR)/main.cpp \
+       $(SRC_DIR)/newZombie.cpp \
+       $(SRC_DIR)/randomChump.cpp \
+       $(SRC_DIR)/Zombie.cpp
 
-SRCS	= $(SRC_DIR)
+OBJS = $(SRCS:$(SRC_DIR)/%.cpp=$(OBJ_DIR)/%.o)
 
-#Directory
-SRC_DIR	= src/
-OBJ_DIR	= obj
+all: $(NAME)
+
+$(NAME): $(OBJS)
+	$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
+
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp | $(OBJ_DIR)
+	$(CC) $(CFLAGS) -c $< -o $@
+
+$(OBJ_DIR):
+	mkdir -p $(OBJ_DIR)
+
+clean:
+	rm -rf $(OBJ_DIR)
+
+fclean: clean
+	rm -f $(NAME)
+
+re: fclean all
+
+.PHONY: all clean fclean re
