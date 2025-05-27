@@ -7,8 +7,8 @@ int main()
     std::string* stringPTR = &string;
     std::string& stringREF = string;
 
-    std::cout << "Endereco da string: " << &string;
-    std::cout << "Endereco contido em stringPTR: " << std::endl;
+    std::cout << "Endereco da string: " << &string << std::endl;
+    std::cout << "Endereco contido em stringPTR: " << stringPTR << std::endl;
     std::cout << "Endereco contido em stringREF: " << &stringREF << std::endl;
 
     std::cout << "Valor da string: " << string << std::endl;
