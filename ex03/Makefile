@@ -15,6 +15,7 @@ all: $(NAME)
 
 #Gerar executavel
 $(NAME): $(OBJS)
+	$(CC) $(CFLAGS) $(OBJS) -o $@
 
 #Regra de compilacao dos objetos
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp | $(OBJ_DIR)
