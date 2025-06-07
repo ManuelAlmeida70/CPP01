@@ -32,6 +32,9 @@ void FileReplace::replaceInFile()
             line = line.substr(0, pos) + s2 + line.substr(pos + s1.length());
             pos += s2.length();
         }
+        outFile << line;
+        if (!inFile.eof())
+            outFile << std::endl;
     }
     inFile.close();
     outFile.close();
