@@ -10,4 +10,14 @@ $(NAME): $(OBJS)
 	$(CC) $(CFLAGS) $(OBJS) -o $@
 
 %.o: %.cpp
-	$()
+	$(CC) $(CFLAGS) -c $< -o $@
+
+clean:
+	rm -f *.o
+
+fclean: clean
+	rm -f $(NAME)
+
+re: fclean all
+
+.PHONY: all clean fclean re
