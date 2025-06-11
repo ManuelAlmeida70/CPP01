@@ -6,25 +6,22 @@ INCLUDE		= -Iinclude
 SRC_DIR		= src
 OBJ_DIR		= obj
 
-SRCS		= $(SRC_DIR)/main.cpp \
-			  $(SRC_DIR)/Zombie.cpp \
-		      $(SRC_DIR)/ZombieHorde.cpp
+SRCS		= main.cpp \
+			  Zombie.cpp \
+		      ZombieHorde.cpp
 
-OBJS			= $(SRCS:$(SRC_DIR)/%.cpp=$(OBJ_DIR)/%.o)
+OBJS			= $(SRCS:.cpp=.o)
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
 	$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
 
-$(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp | $(OBJ_DIR)
+%.o: %.cpp
 	$(CC) $(CFLAGS) -c $< -o $@
 
-$(OBJ_DIR):
-	@mkdir -p $(OBJ_DIR)
-
 clean:
-	rm -rf $(OBJ_DIR)
+	rm -f *.o
 
 fclean: clean
 	rm -f $(NAME)
