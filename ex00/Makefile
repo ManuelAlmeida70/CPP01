@@ -21,7 +21,7 @@ $(NAME): $(OBJS)
 
 
 clean:
-	rm -rf *.o
+	rm -f *.o
 
 fclean: clean
 	rm -f $(NAME)
